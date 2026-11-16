@@ -36,6 +36,13 @@ LABS = [
              ("Learn","learn.html","Ten guided modules (dextrose, protein, lipid and L-carnitine, electrolytes, advancement) with tasks and quizzes."),
              ("Check-off","check.html","Blinded calculations, order-building cases and a knowledge check with a scored report.")],
       foot="Educational simulator — not for patient care. All patients are fictional."),
+ dict(code="CICU 05", repo="pediatric-ekg-lab", title="Pediatric EKG Lab",
+      lede="Place a pediatric 12-lead from bony landmarks, estimate the QRS axis for age, and recognize PALS and post-op CHD rhythms. Pick a mode to begin.",
+      card="12-lead electrode placement, QRS axis by age, and rhythm recognition on a printed-style 12-lead.",
+      modes=[("Teach","lab.html#teach","Four worked lessons: reading a tracing, placing the electrodes, finding the axis, and a 26-rhythm library."),
+             ("Practice","lab.html#practice","Place all 10 electrodes, estimate the axis on random tracings, and name unknown rhythms, with feedback."),
+             ("Knowledge check","lab.html#assess","12 case questions on unlabeled tracings, with explanations and links back to the lessons you missed.")],
+      foot="Texas Center for Pediatric and Congenital Heart Disease · APP education · Educational simulation only. Model tracings are schematic and not for clinical interpretation."),
 ]
 
 def mark(legs, blip, size=36):
@@ -142,7 +149,7 @@ def hub():
                   f'<p>{html.escape(L["card"])}</p></div><ul>{modes}</ul></article>')
     body = (mast(program=False)
       + '<main class="wrap"><section class="hubhero"><div><h1>Pediatric APP Academy</h1><p class="lede">Orientation, simulation and competency for acute care pediatric APPs. Each lab has a Teach mode for the classroom, a self-paced mode for practice, and an assessment.</p></div>'
-      + '<aside class="pearl"><b>Start with Teach, practice on your own, then check off with your preceptor.</b><span>4 CICU labs · 12 modes</span></aside></section>'
+      + f'<aside class="pearl"><b>Start with Teach, practice on your own, then check off with your preceptor.</b><span>{len(LABS)} CICU labs · {sum(len(L["modes"]) for L in LABS)} modes</span></aside></section>'
       + '<section aria-labelledby="cicu"><div class="track"><h2 id="cicu">CICU Academy</h2><p>Pediatric cardiac ICU simulators</p></div>'
       + f'<div class="labs">{cards}</div></section></main>'
       + '<footer><div class="wrap"><p>Educational simulations only. Not connected to any medical device and not a substitute for manufacturer instructions, local policy, supervision or clinical judgment.</p></div></footer>')
